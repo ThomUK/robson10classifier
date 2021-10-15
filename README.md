@@ -12,6 +12,14 @@ simplify classification and analysis of childbirth data according to the
 System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/),
 which was adopted by the World Health Organisation in 2015.
 
+## Overview of the Robson 10 Group Classification System
+
+The image below is a summary of the TGCS, taken from the World Health
+Organisation’s TGCS Implementation Manual, available from [this
+page](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/).
+
+<img src="man/figures/README_Robson-Classification-Summary.png" width="100%" alt="An overview of the Robson Ten Group Classification System (TGCS), taken from the World Health Organisation's TGCS Implementation Guide."/>
+
 ## Installation
 
 The package is not yet on CRAN. You can install from github using the
@@ -47,11 +55,3 @@ follow notes on planned functionality.
     dates, and will create a Robson Classification Report Table to the
     same standard as table 5 of the World Health Organisation Robson
     Classification Implementation Manual p.34
-
-## Overview of the Robson 10 Group Classification System
-
-The image below is a summary of the TGCS, taken from the World Health
-Organisation’s TGCS Implementation Manual, available from [this
-page](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/).
-
-<img src="man/figures/README_Robson-Classification-Summary.png" width="80%" alt="An overview of the Robson Ten Group Classification System (TGCS), taken from the World Health Organisation's TGCS Implementation Guide."/>

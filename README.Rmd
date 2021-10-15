@@ -20,6 +20,12 @@ knitr::opts_chunk$set(
 
 The goal of Robson10Classifier is to provide a suite of functions to simplify classification and analysis of childbirth data according to the [Robson 10 Group Classification System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/), which was adopted by the World Health Organisation in 2015.  
 
+## Overview of the Robson 10 Group Classification System
+
+The image below is a summary of the TGCS, taken from the World Health Organisation's TGCS Implementation Manual, available from [this page](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/).  
+
+<img src="man/figures/README_Robson-Classification-Summary.png" width="100%" alt="An overview of the Robson Ten Group Classification System (TGCS), taken from the World Health Organisation's TGCS Implementation Guide."/>
+
 ## Installation
 
 The package is not yet on CRAN.  You can install from github using the {remotes} package:
@@ -40,9 +46,3 @@ The package is in the early stages of planning and development.  There follow no
 * tgcs_report_time_series() will take a population of birth records with dates (eg. births in a given healthcare facility or region), and will create an RMarkdown report of time-series trends for each Robson group, and unclassifiable records.
 
 * tgcs_report_table() will take a population of birth records with dates, and will create a Robson Classification Report Table to the same standard as table 5 of the World Health Organisation Robson Classification Implementation Manual p.34
-
-## Overview of the Robson 10 Group Classification System
-
-The image below is a summary of the TGCS, taken from the World Health Organisation's TGCS Implementation Manual, available from [this page](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/).  
-
-<img src="man/figures/README_Robson-Classification-Summary.png" width="80%" alt="An overview of the Robson Ten Group Classification System (TGCS), taken from the World Health Organisation's TGCS Implementation Guide."/>
