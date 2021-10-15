@@ -1,0 +1,57 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Robson10Classifier
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of Robson10Classifier is to provide a suite of functions to
+simplify classification and analysis of childbirth data according to the
+[Robson 10 Group Classification
+System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/),
+which was adopted by the World Health Organisation in 2015.
+
+## Installation
+
+The package is not yet on CRAN. You can install from github using the
+{remotes} package:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("https://github.com/ThomUK/Robson10Classifier", build_vignettes = TRUE)
+```
+
+## Package Planning
+
+The package is in the early stages of planning and development. There
+follow notes on planned functionality.
+
+-   tgcs\_classify() will take values for the 6 obstetric variables, and
+    return the Robson classification, or “unclassifiable” if some data
+    required to do the classification is missing. If the case is
+    classifiable but there is missing data within the obstetric
+    variables, this will also be reported.
+
+-   tgcs\_report\_unclassifiable() will take a population of birth
+    records with obstetric variables, and will summarise the reasons for
+    any unclassifiable records, according to which obstetric variables
+    are missing.
+
+-   tgcs\_report\_time\_series() will take a population of birth records
+    with dates (eg. births in a given healthcare facility or region),
+    and will create an RMarkdown report of time-series trends for each
+    Robson group, and unclassifiable records.
+
+-   tgcs\_report\_table() will take a population of birth records with
+    dates, and will create a Robson Classification Report Table to the
+    same standard as table 5 of the World Health Organisation Robson
+    Classification Implementation Manual p.34
+
+## Overview of the Robson 10 Group Classification System
+
+The image below is a summary of the TGCS, taken from the World Health
+Organisation’s TGCS Implementation Manual, available from [this
+page](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/).
+
+<img src="man/figures/README_Robson-Classification-Summary.png" width="80%" alt="An overview of the Robson Ten Group Classification System (TGCS), taken from the World Health Organisation's TGCS Implementation Guide."/>
