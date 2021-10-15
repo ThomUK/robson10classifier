@@ -5,4 +5,6 @@ tgcs_classify <- function(.data){
     msg = "tgcs_classify: .data must be a data.frame"
   )
 
+tgcs_validate_dataframe(.data)
+
 }
