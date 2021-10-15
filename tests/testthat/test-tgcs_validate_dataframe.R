@@ -6,7 +6,7 @@ test_that("it throws an error if there is a missing column", {
   )
 
   expect_error(
-    tgcs_classify(problem_dataframe),
+    tgcs_validate_dataframe(problem_dataframe),
     "tgcs_validate_dataframe: The data frame must contain a column named 'Previous_CS'."
   )
 
@@ -24,7 +24,7 @@ test_that("it throws an error if dataframe has no rows", {
   )
 
   expect_error(
-    tgcs_classify(problem_dataframe),
+    tgcs_validate_dataframe(problem_dataframe),
     "tgcs_validate_dataframe: The data frame must contain at least one row."
   )
 
@@ -41,6 +41,6 @@ test_that("it returns TRUE if all required columns are present", {
     Fetal_Lie_And_Presentation = 1
   )
 
-  expect_equal(tgcs_classify(ok_dataframe), TRUE)
+  expect_equal(tgcs_validate_dataframe(ok_dataframe), TRUE)
 
 })
