@@ -16,6 +16,7 @@ tgcs_classify <- function(.data){
     tgcs_classify_rg9() %>%
     tgcs_classify_rg7() %>%
     tgcs_classify_rg6() %>%
+    tgcs_classify_rg10()
 
   return(result)
 
