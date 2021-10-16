@@ -29,18 +29,3 @@ test_that("it returns a data frame with a column for classification", {
   o <- tgcs_classify(data)
   expect_equal("Robson_Classification" %in% colnames(o), TRUE)
 })
-
-test_that("it correctly classifies robson group 8", {
-
-  data <- data.frame(
-    Parity = NA,
-    Previous_CS = NA,
-    Onset_Of_Labour = NA,
-    Number_Of_Fetuses = rep(c("Multiple", "Single"), 2),
-    Gestational_Age = NA,
-    Fetal_Lie_And_Presentation = NA
-  )
-
-  o <- tgcs_classify(data)
-  expect_equal(nrow(o[o$Robson_Classification == "8", ]), 2) # 2 rows classified as robson 8
-})

@@ -8,10 +8,11 @@ tgcs_classify <- function(.data){
   tgcs_validate_dataframe(.data)
 
   # prepare a result dataframe with a Robson_Classification column
-  result <- .data %>% dplyr::mutate(Robson_Classification = "not yet classified")
+  result <- .data %>%
+    dplyr::mutate(Robson_Classification = "not yet classified")
 
-  # classify robson group 8
-  result[result$Number_Of_Fetuses == "Multiple","Robson_Classification"] <- "8"
+  result <- result %>%
+    tgcs_classify_rg8()
 
   return(result)
 
