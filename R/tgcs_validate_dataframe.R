@@ -1,14 +1,5 @@
 tgcs_validate_dataframe <- function(.data){
 
-  check <- function(op) {
-    if (op %in% colnames(.data)) {
-      return(TRUE)
-    }
-    stop("tgcs_validate_dataframe: ",
-         "The data frame must contain a column named '", op, "'."
-    )
-  }
-
   # check for zero rows
   if(nrow(.data) == 0){
     stop("tgcs_validate_dataframe: ",
@@ -16,14 +7,25 @@ tgcs_validate_dataframe <- function(.data){
     )
   }
 
-  # required columns
-  check("Parity")
-  check("Previous_CS")
-  check("Onset_Of_Labour")
-  check("Number_Of_Fetuses")
-  check("Gestational_Age")
-  check("Fetal_Lie_And_Presentation")
+  # check for missing columns
+  check_missing_column <- function(column_name) {
+    if (column_name %in% colnames(.data)) {
+      return(TRUE)
+    }
+    stop("tgcs_validate_dataframe: ",
+         "The data frame must contain a column named '", column_name, "'."
+    )
+  }
 
+  # do the column check
+  check_missing_column("Parity")
+  check_missing_column("Previous_CS")
+  check_missing_column("Onset_Of_Labour")
+  check_missing_column("Number_Of_Fetuses")
+  check_missing_column("Gestational_Age")
+  check_missing_column("Fetal_Lie_And_Presentation")
+
+  # check for illegal values in columns
   check_column_values <- function(column_name, values_to_check){
 
     allowed_values <- list(
@@ -50,7 +52,7 @@ tgcs_validate_dataframe <- function(.data){
     }
   }
 
-  # check for illegal values in columns
+  # do the check for illegal values
   check_column_values("Parity", .data$Parity)
   check_column_values("Previous_CS", .data$Previous_CS)
   check_column_values("Onset_Of_Labour", .data$Onset_Of_Labour)
