@@ -40,7 +40,8 @@ test_that("it can classify every combination of the 6 obstetric variables", {
   Gestational_Age <- c("Term", "Preterm", NA)
   Fetal_Lie_And_Presentation <- c("Cephalic", "Breech", "Transverse or Oblique lie", NA)
 
-  #combine them to give a data frame of all 1296 possible combinations
+  # combine them to give a data frame of all 1296 mathematically possible combinations
+  # note not all combinations make physical sense (eg. Nullipara with previous CS)
   data <- tidyr::crossing(Parity, Previous_CS, Onset_Of_Labour, Number_Of_Fetuses, Gestational_Age, Fetal_Lie_And_Presentation)
 
   o <- tgcs_classify(data)
