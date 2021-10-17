@@ -24,6 +24,40 @@ tgcs_validate_dataframe <- function(.data){
   check("Gestational_Age")
   check("Fetal_Lie_And_Presentation")
 
+  check_column_values <- function(column_name, values_to_check){
+
+    allowed_values <- list(
+      Parity = c("Nullipara", "Multipara", NA),
+      Previous_CS = c("None", "One or more", NA),
+      Onset_Of_Labour = c("Spontaneous", "Induced", "Pre-labour CS", NA),
+      Number_Of_Fetuses = c("Multiple", "Single", NA),
+      Gestational_Age = c("Term", "Preterm", NA),
+      Fetal_Lie_And_Presentation = c("Cephalic", "Breech", "Transverse or Oblique lie", NA)
+    )
+
+    for(i in 1:length(values_to_check)){
+      if(!values_to_check[i] %in% allowed_values[[column_name]]) {
+        stop(
+          "tgcs_validate_dataframe: The data frame column '",
+          column_name,
+          "' contains the value '",
+          values_to_check[i],
+          "', which is not valid.\n",
+          "Valid values for this column are:\n",
+          paste(allowed_values[[column_name]], collapse = ", ")
+        )
+      }
+    }
+  }
+
+  # check for illegal values in columns
+  check_column_values("Parity", .data$Parity)
+  check_column_values("Previous_CS", .data$Previous_CS)
+  check_column_values("Onset_Of_Labour", .data$Onset_Of_Labour)
+  check_column_values("Number_Of_Fetuses", .data$Number_Of_Fetuses)
+  check_column_values("Gestational_Age", .data$Gestational_Age)
+  check_column_values("Fetal_Lie_And_Presentation", .data$Fetal_Lie_And_Presentation)
+
   return(TRUE)
 
 }

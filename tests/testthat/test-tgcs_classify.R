@@ -1,12 +1,12 @@
 library(mockery)
 
 data <- data.frame(
-    Parity = 1,
-    Previous_CS = 1,
-    Onset_Of_Labour = 1,
-    Number_Of_Fetuses = 1,
-    Gestational_Age = 1,
-    Fetal_Lie_And_Presentation = 1
+    Parity = "Nullipara",
+    Previous_CS = "None",
+    Onset_Of_Labour = "Spontaneous",
+    Number_Of_Fetuses = "Single",
+    Gestational_Age = "Term",
+    Fetal_Lie_And_Presentation = "Cephalic"
   )
 
 test_that("it throws an error if .data is not a data.frame", {
