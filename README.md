@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Robson10Classifier
+# robson10classifier
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Robson10Classifier is to provide a suite of functions to
+The goal of robson10classifier is to provide a suite of functions to
 simplify classification and analysis of childbirth data according to the
 [Robson 10 Group Classification
 System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/),
@@ -26,7 +26,7 @@ You can install from github using the {remotes} package:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("https://github.com/ThomUK/Robson10Classifier")
+remotes::install_github("https://github.com/ThomUK/robson10classifier")
 ```
 
 ## How to use
@@ -40,7 +40,7 @@ This can be a number from 1 to 10, or in the case that data required for
 classification was missing, “Unclassifiable”.
 
 ``` r
-library(Robson10Classifier)
+library(robson10classifier)
 
 # prepare the data (ID, plus 6 columns of obstetric variables)
 data <- data.frame(

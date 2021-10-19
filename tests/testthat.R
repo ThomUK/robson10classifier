@@ -1,4 +1,4 @@
 library(testthat)
-library(Robson10Classifier)
+library(robson10classifier)
 
-test_check("Robson10Classifier")
+test_check("robson10classifier")

@@ -14,15 +14,15 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-library(Robson10Classifier)
+library(robson10classifier)
 ```
 
-# Robson10Classifier
+# robson10classifier
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Robson10Classifier is to provide a suite of functions to simplify classification and analysis of childbirth data according to the [Robson 10 Group Classification System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/), which was adopted by the World Health Organisation in 2015.  
+The goal of robson10classifier is to provide a suite of functions to simplify classification and analysis of childbirth data according to the [Robson 10 Group Classification System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/), which was adopted by the World Health Organisation in 2015.  
 
 ## Overview of the Robson 10 Group Classification System
 
@@ -36,7 +36,7 @@ You can install from github using the {remotes} package:
 
 ```{r eval=FALSE, message=FALSE, include=TRUE}
 # install.packages("remotes")
-remotes::install_github("https://github.com/ThomUK/Robson10Classifier")
+remotes::install_github("https://github.com/ThomUK/robson10classifier")
 ```
 
 ## How to use
@@ -44,7 +44,7 @@ remotes::install_github("https://github.com/ThomUK/Robson10Classifier")
 The main function implemented so far is tgcs_classify().  It takes as an input a data frame containing a minimum of 6 columns, one for each of the obstetric variables that are used to classify the Robson Groups.  Each row in the data frame represents a birth.  The function returns the same data frame, with an additional column for `Robson_Classification`.  This can be a number from 1 to 10, or in the case that data required for classification was missing, "Unclassifiable".
 
 ```{r, message = FALSE, warning = FALSE, echo=TRUE}
-library(Robson10Classifier)
+library(robson10classifier)
 
 # prepare the data (ID, plus 6 columns of obstetric variables)
 data <- data.frame(
