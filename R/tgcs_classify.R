@@ -1,3 +1,19 @@
+#' Add Robson Classification
+#'
+#' Adds Robson Classifications to a data frame of births, where each birth
+#' has details of the 6 obstetric variables recorded.
+#'
+#' @param .data A data frame containing at least 6 columns, one for each
+#' obstetric variable. Additional columns are preserved in the output.
+#'
+#' @export
+#'
+#' @return A data frame with Robson Classification added.
+#'
+#' @importFrom magrittr %>%
+#' @import dplyr
+#' @import assertthat
+
 tgcs_classify <- function(.data){
 
   assertthat::assert_that(
