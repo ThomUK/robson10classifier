@@ -1,16 +1,20 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r, include = FALSE, echo = FALSE}
 knitr::opts_chunk$set(
+  error = TRUE,
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(Robson10Classifier)
 ```
 
 # Robson10Classifier
@@ -28,18 +32,47 @@ The image below is a summary of the TGCS, taken from the World Health Organisati
 
 ## Installation
 
-The package is not yet on CRAN.  You can install from github using the {remotes} package:
+You can install from github using the {remotes} package:
 
-``` r
+```{r eval=FALSE, message=FALSE, include=TRUE}
 # install.packages("remotes")
-remotes::install_github("https://github.com/ThomUK/Robson10Classifier", build_vignettes = TRUE)
+remotes::install_github("https://github.com/ThomUK/Robson10Classifier")
+```
+
+## How to use
+
+The main function implemented so far is tgcs_classify().  It takes as an input a data frame containing a minimum of 6 columns, one for each of the obstetric variables that are used to classify the Robson Groups.  Each row in the data frame represents a birth.  The function returns the same data frame, with an additional column for `Robson_Classification`.  This can be a number from 1 to 10, or in the case that data required for classification was missing, "Unclassifiable".
+
+```{r, message = FALSE, warning = FALSE, echo=TRUE}
+library(Robson10Classifier)
+
+# prepare the data (ID, plus 6 columns of obstetric variables)
+data <- data.frame(
+  Birth_ID = c(1:5),
+  Parity = c("Nullipara", "Multipara", "Nullipara", "Multipara", NA),
+  Previous_CS = c("None", "One or more", "None", "One or more", NA),
+  Onset_Of_Labour = c("Spontaneous", "Pre-labour CS", "Induced", "Spontaneous", NA),
+  Number_Of_Fetuses = c("Multiple", "Single", "Single", "Single", "Multiple"),
+  Gestational_Age = c("Term", "Preterm", "Term", "Term", NA),
+  Fetal_Lie_And_Presentation = c("Cephalic", "Breech", "Cephalic", NA, NA)
+)
+
+# use the package to make the classifications
+classification <- tgcs_classify(data)
+
+# visualise the resulting classifications in a table
+kableExtra::kbl(classification)
+
 ```
 
 ## Package Planning
 
 The package is in the early stages of planning and development.  There follow notes on planned functionality.  
 
-* tgcs_classify() will take values for the 6 obstetric variables, and return the Robson classification, or "unclassifiable" if some data required to do the classification is missing. If the case is classifiable but there is missing data within the obstetric variables, this will also be reported.  
+* tgcs_classify() takes values for the 6 obstetric variables, and returns the Robson classification, or "Unclassifiable" if some data required to do the classification is missing.  
+In future:
+   * The function will also return details about why an element is unclassifiable.  
+   * The function will support sub-grouping of certain Robson Groups (eg. 2a, 2b, 4a, 4b, 5.1, 5.2).  
 
 * tgcs_report_unclassifiable() will take a population of birth records with obstetric variables, and will summarise the reasons for any unclassifiable records, according to which obstetric variables are missing.  
 
