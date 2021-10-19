@@ -6,9 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of robson10classifier is to provide a suite of functions to
-simplify classification and analysis of childbirth data according to the
-[Robson 10 Group Classification
+The goal of the {robson10classifier} package is to provide a suite of
+functions simplyfying the classification and analysis of childbirth data
+according to the [Robson 10 Group Classification
 System](https://www.who.int/reproductivehealth/publications/maternal_perinatal_health/robson-classification/en/),
 which was adopted by the World Health Organisation in 2015.
 
@@ -31,8 +31,8 @@ remotes::install_github("https://github.com/ThomUK/robson10classifier")
 
 ## How to use
 
-The main function implemented so far is tgcs_classify(). It takes as an
-input a data frame containing a minimum of 6 columns, one for each of
+The main function implemented so far is `tgcs_classify()`. It takes as
+an input a data frame containing a minimum of 6 columns, one for each of
 the obstetric variables that are used to classify the Robson Groups.
 Each row in the data frame represents a birth. The function returns the
 same data frame, with an additional column for `Robson_Classification`.

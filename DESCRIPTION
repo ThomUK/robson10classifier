@@ -1,6 +1,6 @@
 Package: robson10classifier
 Title: Helpers For Analysing Childbirth According To The Robson 10 Group Classification System (TGCS)
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Tom", "Smith", , "tomsmith_uk@hotmail.com", role = c("aut", "cre"))
 Description: Helpers for analysing childbirth according to the Robson Ten Group Classification System (TGCS).
