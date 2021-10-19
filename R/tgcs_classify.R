@@ -9,7 +9,7 @@ tgcs_classify <- function(.data){
 
   # prepare a result dataframe with a Robson_Classification column
   result <- .data %>%
-    dplyr::mutate(Robson_Classification = "not yet classified")
+    dplyr::mutate(Robson_Classification = "not yet classified", .before = Parity)
 
   result <- result %>%
     tgcs_classify_rg8() %>%
