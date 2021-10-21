@@ -31,12 +31,12 @@ remotes::install_github("https://github.com/ThomUK/robson10classifier")
 
 ## How to use
 
-The main function implemented so far is `tgcs_classify()`. It takes as
-an input a data frame containing a minimum of 6 columns, one for each of
-the obstetric variables that are used to classify the Robson Groups.
-Each row in the data frame represents a birth. The function returns the
-same data frame, with an additional column for `Robson_Classification`.
-This can be a number from 1 to 10, or in the case that data required for
+The package’s main is `tgcs_classify()`. It takes a data frame
+containing a minimum of 6 columns, one for each of the obstetric
+variables that are used to classify the Robson Groups. Each row in the
+data frame represents a birth. The function returns the same data frame,
+with an additional column for `Robson_Classification`. This can be a
+number from 1 to 10, or in the case that data required for
 classification was missing, “Unclassifiable”.
 
 ``` r
@@ -44,7 +44,7 @@ library(robson10classifier)
 
 # prepare the data (ID, plus 6 columns of obstetric variables)
 data <- data.frame(
-  Birth_ID = c(1:5),
+  ID = c(1:5),
   Parity = c("Nullipara", "Multipara", "Nullipara", "Multipara", NA),
   Previous_CS = c("None", "One or more", "None", "One or more", NA),
   Onset_Of_Labour = c("Spontaneous", "Pre-labour CS", "Induced", "Spontaneous", NA),
@@ -63,8 +63,8 @@ kableExtra::kbl(classification)
 <table>
 <thead>
 <tr>
-<th style="text-align:right;">
-Birth_ID
+<th style="text-align:left;">
+ID
 </th>
 <th style="text-align:left;">
 Robson_Classification
@@ -91,7 +91,7 @@ Fetal_Lie_And_Presentation
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
@@ -117,7 +117,7 @@ Cephalic
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
 <td style="text-align:left;">
@@ -143,7 +143,7 @@ Breech
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
 3
 </td>
 <td style="text-align:left;">
@@ -169,7 +169,7 @@ Cephalic
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
 4
 </td>
 <td style="text-align:left;">
@@ -195,7 +195,7 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5
 </td>
 <td style="text-align:left;">
@@ -225,30 +225,51 @@ NA
 
 ## Package Planning
 
-The package is in the early stages of planning and development. There
-follow notes on planned functionality.
+The package is in the early stages of development. The section below
+summarises the functionality that is implemented, and the functionality
+planned for the future.
 
--   tgcs_classify() takes values for the 6 obstetric variables, and
+#### 1. Implemented (or partially implemented) functions:
+
+-   `tgcs_classify()` takes values for the 6 obstetric variables, and
     returns the Robson classification, or “Unclassifiable” if some data
     required to do the classification is missing.  
     In future:
-
-    -   The function will also return details about why an element is
+    -   It will also return details about why an element is
         unclassifiable.  
-    -   The function will support sub-grouping of certain Robson Groups
-        (eg. 2a, 2b, 4a, 4b, 5.1, 5.2).
+    -   It will support sub-grouping of certain Robson Groups (eg. 2a,
+        2b, 4a, 4b, 5.1, 5.2).
+-   `tgcs_make_babies()` produces a simulated set of births, with
+    randomly assigned obstetric variables. Useful for testing the
+    package, or for a quick demo of the other functionality. eg.
+    `data <- tgcs_make_babies(1000)` will make a dataframe of 1000
+    births. Missing data is also included, which leads to
+    “Unclassifiable” Robson Groups, as can be occasionally expected with
+    real world data.  
+    In future:
+    -   An argument will be implemented to control the probability that
+        the values under each variable occur. In this way it will be
+        possible to tune the output in line with your facility’s numbers
+        (eg. no missing data).
+    -   Arguments will be implemented to add simulated birth dates, with
+        a normally-distributed number of births on each date. It will be
+        possible to tune the result by setting mean and standard
+        deviations for the typical number of births per day in your
+        facility.
 
--   tgcs_report_unclassifiable() will take a population of birth records
-    with obstetric variables, and will summarise the reasons for any
-    unclassifiable records, according to which obstetric variables are
-    missing.
+#### 2. Planned for future implementation:
 
--   tgcs_report_time_series() will take a population of birth records
+-   `tgcs_report_unclassifiable()` will take a population of birth
+    records with obstetric variables, and will summarise the reasons for
+    any unclassifiable records, according to which obstetric variables
+    are missing.
+
+-   `tgcs_report_time_series()` will take a population of birth records
     with dates (eg. births in a given healthcare facility or region),
     and will create an RMarkdown report of time-series trends for each
     Robson group, and unclassifiable records.
 
--   tgcs_report_table() will take a population of birth records with
+-   `tgcs_report_table()` will take a population of birth records with
     dates, and will create a Robson Classification Report Table to the
     same standard as table 5 of the World Health Organisation Robson
     Classification Implementation Manual p.34
