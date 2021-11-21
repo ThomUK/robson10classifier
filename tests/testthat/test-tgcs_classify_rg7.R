@@ -13,7 +13,7 @@ test_that("it correctly classifies robson group 7", {
   o <- tgcs_classify_rg7(data)
   expect_equal(nrow(o), 12) # 12 rows in total
   expect_equal(nrow(o[o$Robson_Classification == "7", ]), 1) # 1 row classified as robson 7
-  expect_equal(nrow(o[o$Robson_Classification == "Unclassifiable", ]), 6) # 6 rows unclassifiable
+  expect_equal(nrow(o[o$Robson_Classification == "Unclassifiable", ]), 4) # 4 rows unclassifiable
 })
 
 test_that("it does not classify when the birth is not breech", {
