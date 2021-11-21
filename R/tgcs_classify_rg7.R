@@ -3,7 +3,16 @@ tgcs_classify_rg7 <- function(.data){
   x <- .data
 
   # label unclassifiable
-  condition <- {x$Robson_Classification == "not yet classified" & (is.na(x$Fetal_Lie_And_Presentation) | is.na(x$Parity))}
+  condition <- {
+    x$Robson_Classification == "not yet classified" &
+      (
+        is.na(x$Fetal_Lie_And_Presentation)
+        | (
+            is.na(x$Parity)
+            & x$Fetal_Lie_And_Presentation == "Breech"
+          )
+      )
+  }
 
   if(length(x[condition, ]) > 0){
     x$Robson_Classification[condition] <- "Unclassifiable"
