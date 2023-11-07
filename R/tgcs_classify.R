@@ -39,6 +39,9 @@ tgcs_classify <- function(.data){
     tgcs_classify_rg2() %>%
     tgcs_classify_rg1()
 
+  # make the robson group column into factors, with a defined order
+  result$Robson_Classification <- factor(result$Robson_Classification, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Unclassifiable"))
+
   return(result)
 
 }

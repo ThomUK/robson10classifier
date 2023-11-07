@@ -30,6 +30,11 @@ test_that("it returns a data frame with a column for classification", {
   expect_equal("Robson_Classification" %in% colnames(o), TRUE)
 })
 
+test_that("the returned robson classification column is a factor", {
+  o <- tgcs_classify(data)
+  expect_equal(class(o$Robson_Classification), "factor")
+})
+
 test_that("it can classify every combination of the 6 obstetric variables", {
 
   # define all possible levels for each obstetric variable
