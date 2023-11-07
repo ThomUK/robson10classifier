@@ -1,0 +1,9 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles: {}
+last_built: 2023-11-07T21:35Z
+urls:
+  reference: https://thomuk.github.io/robson10classifier/reference
+  article: https://thomuk.github.io/robson10classifier/articles
+
