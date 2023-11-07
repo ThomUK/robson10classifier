@@ -2,3 +2,4 @@
 
 # ignore the local dev_scripts folder and contents
 R/dev_scripts/*
+docs
